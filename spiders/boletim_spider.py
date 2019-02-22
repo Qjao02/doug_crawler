@@ -5,7 +5,7 @@ class BoletimSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = []
-        for i in range (89):
+        for i in range (1,84):
             urls.append('https://ufsj.edu.br/ascom/boletim{0:03}.php'.format(i))
 
         for url in urls:
