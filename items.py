@@ -18,3 +18,4 @@ class DougCrawlerItem(scrapy.Item):
 class BoletimItem(scrapy.Item):
     title= scrapy.Field()
     news = scrapy.Field()
+
