@@ -5,7 +5,8 @@ class BoletimSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = []
-        for i in range (1,84):
+
+        for i in range (1,91):
             urls.append('https://ufsj.edu.br/ascom/boletim{0:03}.php'.format(i))
 
         for url in urls:
@@ -15,7 +16,10 @@ class BoletimSpider(scrapy.Spider):
         boletim =  {
             'boletim-titulo' :  response.xpath('//p[@class="titulo-int2"]/text()').get(),
             'noticia-titulo' :  response.xpath('//div/p/strong/text()').getall(),
-            'news': response.xpath('//div[@id="text-int"]//div').getall()
+             'noticia-strong' : response.xpath('//div[@id="texto-int"]//div/strong/text()').getall(),
+            'news': response.xpath('//div[@id="texto-int"]//div').getall(),
+            'news_p': response.xpath('//div[@id="texto-int"]/p').getall(),
+            'news_br': response.xpath('//div[@id="texto-int"]').getall()
 
         }
 
