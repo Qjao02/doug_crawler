@@ -15,11 +15,8 @@ class BoletimSpider(scrapy.Spider):
     def parse(self, response):
         boletim =  {
             'boletim-titulo' :  response.xpath('//p[@class="titulo-int2"]/text()').get(),
-            'noticia-titulo' :  response.xpath('//div/p/strong/text()').getall(),
-             'noticia-strong' : response.xpath('//div[@id="texto-int"]//div/strong/text()').getall(),
-            'news': response.xpath('//div[@id="texto-int"]//div').getall(),
-            'news_p': response.xpath('//div[@id="texto-int"]/p').getall(),
-            'news_br': response.xpath('//div[@id="texto-int"]').getall()
+            'noticia-titulo' :  response.css("p[id^='N']").getall(),
+            'news': response.xpath('//div[@id="texto-int"]').get(),
 
         }
 
